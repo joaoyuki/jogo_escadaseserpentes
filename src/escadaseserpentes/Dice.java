@@ -14,7 +14,7 @@ public class Dice {
 	}
 	
 	public static Dice createDice() {
-		if (uniqueDiceInstance != null) {
+		if (uniqueDiceInstance == null) {
 			uniqueDiceInstance = new Dice();
 		}
 		return uniqueDiceInstance;

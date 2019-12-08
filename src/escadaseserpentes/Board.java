@@ -74,7 +74,20 @@ public class Board implements Printable{
 	}
 
 	public void move(Counter counter, int diceNumber) {
+
+		Space space = counter.getCurrentSpace();
+		int newSpaceNumber = space.getNumber() + diceNumber;
 		
+		Space newSpace;
+		
+		if(newSpaceNumber > spaceHome.getNumber()) {
+			newSpace = spaceHome;
+		} else {
+			newSpace = spaces[newSpaceNumber];
+		}
+		
+		counter.goTo(newSpace);
+		System.out.format("Jogador '%s' foi para a casa %s\n", counter.getName(), newSpaceNumber);
 	}
 	
 	

@@ -3,7 +3,7 @@ package escadaseserpentes;
 public class Counters implements Printable{
 
 	private Counter[] counters; 
-	private int currentIndex; //Jogador da vez
+	private int currentIndex = -1; //Jogador da vez
 	
 	public Counters(Board board, int players) {
 		counters = new Counter[players];
@@ -24,4 +24,10 @@ public class Counters implements Printable{
 		}
 	}
 	
+	public Counter next() {
+		// Algoritimo para percorrer um array circular
+		currentIndex = (currentIndex + 1) % counters.length;
+		return counters[currentIndex];
+	}
+ 	
 }
