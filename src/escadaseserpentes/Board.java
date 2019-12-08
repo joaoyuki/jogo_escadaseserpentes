@@ -41,5 +41,38 @@ public class Board implements Printable{
 		System.out.println();
 		
 	}
+
+	public Space[] getSpaces() {
+		return spaces;
+	}
+
+	public void setSpaces(Space[] spaces) {
+		this.spaces = spaces;
+	}
+
+	public Space getSpaceHome() {
+		return spaceHome;
+	}
+
+	public void setSpaceHome(Space spaceHome) {
+		this.spaceHome = spaceHome;
+	}
+
+	public Space getSpaceStartHere() {
+		return spaceStartHere;
+	}
+
+	public void setSpaceStartHere(Space spaceStartHere) {
+		this.spaceStartHere = spaceStartHere;
+	}
+
+	public void setupeCounter(Counter[] counters) {
+		for (Counter counter : counters) {
+			counter.goTo(spaceStartHere);
+			
+		}
+	}
+	
+	
 	
 }
