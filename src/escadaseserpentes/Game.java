@@ -8,6 +8,9 @@ public class Game {
 	public void play() {
 		
 		Board board = new Board(NUM_SPACES);
+		
+		addTransition(board);
+		
 		board.print();
 	
 		Counters counters = new Counters(board, NUMERO_JOGADORES);
@@ -18,7 +21,7 @@ public class Game {
 			currentCounter.play(board);
 			
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(500);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -26,6 +29,15 @@ public class Game {
 		
 		Counter winnerCounter = board.getWinnerCounter();
 		System.out.format("Jogador '%s' GANHOU", winnerCounter.getName());
+	}
+
+	private void addTransition(Board board) {
+		board.addTransition(4, 12);
+		board.addTransition(7, 9);
+		board.addTransition(11, 25);
+		board.addTransition(14, 2);
+		board.addTransition(22, 5);
+		board.addTransition(28, 18);
 	}
 
 }

@@ -91,6 +91,14 @@ public class Board implements Printable{
 		
 		counter.goTo(newSpace);
 		System.out.format("Jogador '%s' foi para a casa %s\n", counter.getName(), newSpaceNumber);
+		
+		Transition transition = newSpace.getTransition();
+		
+		if (transition != null) {
+			System.out.format("Jogador '%s' encontrou uma %s na casa %s\n ", counter.getName(), transition.getType(), newSpace);
+			counter.goTo(transition.getSpaceTo());
+			System.out.format("Jogador '%s' foi para a casa %s\n", counter.getName(), transition.getSpaceTo());
+		}
 	}
 	
 	public boolean gameFinished() {
@@ -99,6 +107,15 @@ public class Board implements Printable{
 	
 	public Counter getWinnerCounter() {
 		return winnerCounter;
+	}
+	
+	public void addTransition(int from, int to) {
+		
+		Space spaceFrom = spaces[from];
+		Space spaceTo = spaces[to];
+		
+		Transition transition = new Transition(spaceFrom, spaceTo);
+		spaceFrom.setTransition(transition);
 	}
 	
 }
