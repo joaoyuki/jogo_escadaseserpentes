@@ -13,7 +13,7 @@ public class Game {
 		Counters counters = new Counters(board, NUMERO_JOGADORES);
 		counters.print();
 	
-		while(true) {
+		while(!board.gameFinished()) {
 			Counter currentCounter = counters.next();
 			currentCounter.play(board);
 			
@@ -24,6 +24,8 @@ public class Game {
 			}
 		}
 		
+		Counter winnerCounter = board.getWinnerCounter();
+		System.out.format("Jogador '%s' GANHOU", winnerCounter.getName());
 	}
 
 }
